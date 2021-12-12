@@ -14,7 +14,8 @@
     "FROM rust",
     "COPY --from=builder /app/target/release/app /app",
     "ENV ROCKET_ADDRESS=0.0.0.0",
-    "ENV ROCKET_PORT=8080",
+    "ENV ROCKET_PORT=80",
+    "EXPOSE 80",
     "CMD [\"./app\"]"
   ]
 }
