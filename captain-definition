@@ -9,10 +9,10 @@
     "RUN cargo build --release",
     "RUN rm src/*.rs",
     "COPY ./src /app/src",
-    "RUN rm ./target/release/deps/app*",
+    "RUN rm /app/target/release/deps/app*",
     "RUN cargo build --release",
     "FROM rust",
-    "COPY --from=builder /app/target/release/app .",
+    "COPY --from=builder /app/target/release/app /app",
     "ENV ROCKET_ADDRESS=0.0.0.0",
     "ENV ROCKET_PORT=8080",
     "CMD [\"./app\"]"
