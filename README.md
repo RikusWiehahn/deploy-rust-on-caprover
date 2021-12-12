@@ -1,4 +1,4 @@
-# Deploy a basic Rust API on Caprover!
+# Deploy a basic Rust API on Caprover 🚀
 
 This is a super basic example project that shows how to deploy a minimal hello-world rust API server on Caprover.
 
