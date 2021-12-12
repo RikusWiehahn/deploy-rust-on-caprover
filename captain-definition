@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM rust as builder",
+    "RUN USER=root cargo new --bin app",
+    "WORKDIR /app",
+    "COPY ./Cargo.lock /app",
+    "COPY ./Cargo.toml /app",
+    "RUN cargo build --release",
+    "RUN rm src/*.rs",
+    "COPY ./src /app/src",
+    "RUN rm ./target/release/deps/app*",
+    "RUN cargo build --release",
+    "FROM rust"
+    "COPY --from=builder /app/target/release/app .",
+    "ENV ROCKET_ADDRESS=0.0.0.0"
+    "ENV ROCKET_PORT=8080",
+    "CMD ["./app"]"
+  ]
+}
