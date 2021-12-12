@@ -12,7 +12,7 @@
     "RUN rm /app-name/target/release/deps/app-name*",
     "RUN cargo build --release",
     "FROM rust",
-    "COPY --from=builder /app-name/target/release/app-name /app-name",
+    "COPY --from=builder /app/target/release/app-name /app-name",
     "ENV ROCKET_ADDRESS=0.0.0.0",
     "ENV ROCKET_PORT=80",
     "EXPOSE 80",
